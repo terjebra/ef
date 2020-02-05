@@ -20,8 +20,12 @@ namespace EF
             {
                 e.HasKey(x => x.Id);
                 e.Property(x => x.Id).HasColumnName("Id").ValueGeneratedOnAdd();
-                e.Property(x => x.FirstName).HasColumnName("FirstName");
-                e.Property(x => x.LastName).HasColumnName("LastName");
+
+                e.OwnsOne(x => x.Name, p =>
+                {
+                    p.Property(x => x.FirstName).HasColumnName("FirstName");
+                    p.Property(x => x.LastName).HasColumnName("LastName");
+                });
                 e.HasMany(x => x.Orders).WithOne().HasForeignKey(x => x.CustomerId);
                 e.ToTable("Customer");
             });
@@ -46,9 +50,15 @@ namespace EF
         public class Customer
         {
             public int Id { get; set; }
+            public CustomerName Name { get; set; }
+            public IList<Order> Orders { get; set; }
+        }
+
+
+        public class CustomerName
+        {
             public string FirstName { get; set; }
             public string LastName { get; set; }
-            public IList<Order> Orders { get; set; }
         }
 
 
