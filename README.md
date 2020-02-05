@@ -1,3 +1,5 @@
-# Initial
+# Entity Framework Core
 
-New ASP NET Core webapplication API template
+Packages
+  - Microsoft.EntityFrameworkCore
+  - Microsoft.EntityFrameworkCore.SqlServer
