@@ -27,7 +27,7 @@ namespace EF
         {
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Db")));
             services.AddControllers();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,8 +39,6 @@ namespace EF
             }
 
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
